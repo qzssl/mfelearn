@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <style>
+        div{width:100px;height:40px;border:1px solid;float: left;}
+    </style>
+</head>
+<body>
+<div id="div">ID</div>
+<div title="A">title A</div>
+<div id="divAB" title="AB">ID Title AB</div>
+<div title="ABC">Title ABC</div>
+<script>
+    $(function () {//设置所有含有id的div背景色为黄色
+        // $("div[id]").css("backgroundColor","yellow");
+    });
+    $(function () {//设置所有属性为title且属性值为A的div的背景色为红色
+        // $("div[title='A']").css("backgroundColor","red");
+    });
+    $(function () {//设置所有属性为title且属性值不为A的元素的背景色为蓝色
+        // $("div[title!='A']").css("backgroundColor","blue");
+    });
+    $(function () {//设置所有属性为title且属性值以A开始的元素的背景色为橘色
+        // $("div[title^='A']").css("backgroundColor","orange");
+    });
+    $(function () {//设置所有属性为title且属性值以C结尾的元素的背景色为粉色
+        // $("div[title$='C']").css("backgroundColor","pink");
+    });
+    $(function () {//设置所有属性为title且属性值含有C的元素的背景色为粉色
+        // $("div[title*='B']").css("backgroundColor","pink");
+    });
+    $(function () {//设置所有属性为title中id的值是“divAB”且属性值含有C的元素的背景色为粉色
+        $("div[id='divAB'][title*='B']").css("backgroundColor","pink");
+    });
+</script>
+</body>
+</html>

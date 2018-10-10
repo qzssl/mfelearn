@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>用cookie记住用户输入内容的表单</title>
+		<script>
+			function loadData(){
+				if(read_cookie("txt3"))$("txt3").value = read_cookie("txt3");
+				if(read_cookie("txt4"))$("txt4").value = read_cookie("txt4");
+			}
+			function saveData(){
+				write_cookie("txt3",$("txt3").value);
+				write_cookie("txt4",$("txt4").value);
+			}
+			
+			function read_cookie(key){
+				var str,ary;
+				str = document.cookie;
+				ary = str.replace(/ *; */g,";").split(";");
+				key = escape(key)+"=";
+				for (var i=0;i<ary.length;i++) {
+					if(ary[i].indexOf(key)==0){
+						return(unescape(ary[i].split("=")[1]);
+					}
+				}
+			}
+			
+			function write_cookie(key,value,cookieDomian,cookiePath,expireTime,targetWindow){
+				var strAppendix="";
+				strAppendix+=cookieDomian?";domain="+cookieDomian:"";
+				strAppendix+=cookiePath?";path="+cookiePath:"";
+				strAppendix+=expireTime?";expire="+expireTime:"";
+				strAppendix+=targetWindow?targetWindow:top;
+				targetWindow.document.cookie=escape(key)+"="+escape(value)+strAppendix;
+			}
+			function $(str){return(document.getElementById(str));}
+		</script>
+	</head>
+	<!--onload 页面载入，页面元素完全载入后激发 -->
+	<!-- onunload 页面被卸载（关闭窗口或转到其他站点）-->
+	<body style="overflow: auto;" onload="loadData();" onunload="saveData();">
+		<form>
+			<table>
+				<tr>
+					<td>普通文本框：</td>
+					<td><input id="txt1"></td>
+				</tr>
+				<tr>
+					<td>普通文本框2：</td>
+					<td><input id="txt2"></td>
+				</tr>
+				<tr>
+					<td>普通文本框3：</td>
+					<td><input id="txt3"></td>
+				</tr>
+				<tr>
+					<td>可以记住输入内容的文本框2：</td>
+					<td><input id="txt4"></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input type="submit" value="提交">
+						<input type="reset" value="重填">
+						<input type="button" value="查看cookie" onclick="alert(document.cookie);">
+					</td>
+				</tr>
+			</table>
+		</form>
+	</body>
+</html>

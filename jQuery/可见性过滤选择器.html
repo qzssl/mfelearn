@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <style>
+        .getClass{background-color: yellow;}
+    </style>
+</head>
+<body>
+<span style="display: none">hidden span</span>
+<span>visible span</span>
+<div>visible div</div>
+<script>
+    $(function () {//给所有可见的div元素添加样式
+        $("div:visible").addClass("getClass");
+    });
+    $(function () {//给不可见元素添加样式
+        $("span:hidden").show().addClass("getClass");
+    })
+</script>
+</body>
+</html>

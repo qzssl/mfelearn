@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <style>
+        div{border:1px solid;width:56px;height:56px;}
+    </style>
+</head>
+<body>
+<div id="div">
+    <span>示例1</span>
+</div>
+<div id="div2">示例2</div>
+<div id="div3">示例3</div>
+<script>
+    $(function () {
+        // $("#div").append($("#div2").html());//向id为div的元素插入内容
+        // $("#div").append(function () {//通过函数插入内容
+        //     return $("#div2").html();
+        // });
+        // $("span").appendTo($("#div2"));//将span插入到id为div2的元素中
+        // $("#div").prepend($("#div2").html());
+        // $("#div").prepend(function () {
+        //     return $("#div2").html();
+        // });
+        // $("span").prependTo($("#div2"));
+        // $("#div").after($("#div3"))
+        $("#div span").insertBefore($("#div3"));
+    })
+</script>
+</body>
+</html>

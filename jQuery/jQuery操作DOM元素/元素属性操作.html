@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+</head>
+<body>
+<!--获取属性值-->
+<!--<img src="images/borderimage.png" title="这是一幅画" alt="">
+<div id="divAlt"></div>
+<script>
+    $(function () {
+        var strAlt=$("img").attr("src");//获取属性值一
+        strAlt +="<br/><br/>"+
+        $("img").attr("title");//获取属性值二
+        $("#divAlt").html(strAlt);//显示在页面中
+    })
+</script>-->
+
+<!--设置属性值-->
+<img src="../images/borderimage.png" alt="">
+<span>正在加载图片...</span>
+<script>
+    $(function () {
+        $("img").attr("src","images/flower-green.png");//设置src属性
+        $("img").attr("title","这是一幅画");
+        $("img").attr({src:"images/flower-green.png",title:"这是一幅画"});//设置多个属性
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <style>
+        .getClass{background-color: yellow;}
+    </style>
+</head>
+<body>
+<div>
+    <h1>基本过滤选择器</h1>
+    <ul>
+        <li class="defClass">item 0</li>
+        <li class="defClass">item 1</li>
+        <li class="nofClass">item 2</li>
+        <li class="defClass">item 3</li>
+    </ul>
+    <span id="spnMove">span move</span>
+</div>
+<script>
+    $(function () {//给第一个li元素增加一个类名为getClass的样式
+        $("li:first").addClass("getClass");
+    });
+    $(function () {//给最后一个li元素增加一个类名为getClass的样式
+        $("li:last").addClass("getClass");
+    });
+    $(function () {//除类名为defClass的元素添加样式
+        $("li:not(.defClass)").addClass("getClass");
+    });
+    $(function () {
+        $("li:even").addClass("getClass");
+    });
+    $(function () {
+        $("li:odd").addClass("getClass");
+    });
+    $(function () {
+        $("li:eq(1)").addClass("getClass");
+    });
+    $(function () {
+        $("li:gt(1)").addClass("getClass");
+    });
+    $(function () {
+        $(":header").addClass("getClass");
+    });
+    $(function () {
+        animateIt();
+        $("#spnMove:animated").addClass("getClass");
+    });
+   function animateIt(){
+       $("#spnMove").slideToggle("slow",animateIt);
+    }
+</script>
+
+</body>
+</html>

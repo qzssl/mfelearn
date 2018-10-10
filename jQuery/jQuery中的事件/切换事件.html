@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+</head>
+<body>
+<img src="images/flower-green.png" style="border: 1px solid #666;padding:3px;">
+<button>11</button>
+<script>
+    $(function () {
+       /* $("button").click(function(){
+            $("img").toggle(
+                function () {$("img").attr("src","images/borderimage.png");$("img").css("display","block")},
+                function () {$("img").attr("src","images/flower-red.png");$("img").css("display","block")},
+                // function () {$("img").attr("src","images/sky.jpg");$("img").css("display","block")}
+            )
+        });*/
+        $("button").click(function () {
+            // $("img").unbind("click");
+            $("img").toggle();
+        });
+    })
+</script>
+</body>
+</html>

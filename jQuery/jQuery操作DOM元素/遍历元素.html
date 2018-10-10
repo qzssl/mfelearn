@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+</head>
+<body>
+<p>
+    <img src="../images/flower-green.png" alt="1">
+    <img src="../images/borderimage.png" alt="2">
+    <img src="../images/sky.jpg" alt="3">
+</p>
+<script>
+    $(function () {
+        $("img").each(function (index) {
+            this.title="序号是："+index+"alt："+this.alt;
+        });
+    })
+</script>
+</body>
+</html>

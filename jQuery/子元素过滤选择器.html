@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <style>
+        .getClass{background-color: yellow;}
+        li{width:100px;}
+    </style>
+</head>
+<body>
+<ul>
+    <li>item 1-0</li>
+    <li>item 1-1</li>
+<!--    <li>item 1-2</li>
+    <li>item 1-3</li>-->
+</ul>
+<ul>
+    <li>item 2-0</li>
+    <li>item 2-1</li>
+<!--    <li>item 2-2</li>
+    <li>item 2-3</li>-->
+</ul>
+<ul>
+    <li>item 3-0</li>
+</ul>
+<input type="button">
+<script>
+    $(function () {//给每个ul下的li的第二个li添加样式
+        // $("li:nth-child(2)").addClass("getClass");
+    });
+    $(function () {//给每个ul下的li的第一个li添加样式
+        // $("li:first-child").addClass("getClass");
+    });
+    $(function () {//给每个ul下的li的最后一个个li添加样式
+        // $("li:last-child").addClass("getClass");
+    });
+    $(function () {//给每个ul下只有一个li添加样式
+        // $("li:only-child").addClass("getClass");
+        $(":button").addClass("getClass");
+    });
+
+</script>
+</body>
+</html>

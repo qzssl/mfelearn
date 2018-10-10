@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+</head>
+<body>
+<span class="s1">示例1</span>
+<span class="s2">示例2</span>
+<script>
+    $(function () {
+        $(".s1").replaceWith("<span>示例3</span>");
+        $("<span>示例4</span>").replaceAll(".s2");
+    })
+</script>
+
+</body>
+</html>

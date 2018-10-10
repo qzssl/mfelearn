@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>跑马灯</title>
+		<style>
+			*{font-size: 12px;font-family: 宋体,Arial;}
+			#mq{
+				width:220px;
+				height:40px;
+				line-height: 20px;
+				overflow: hidden;
+				border: 1px solid black;
+			}
+			#mq div{
+				position: absolute;width:220px;
+				padding:0px 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="mq"> 
+			label标签为input元素定义标注(标记)，它不会向用户呈现任何特殊效果，和span标签类似。
+			但label标签和span标签最大的区别就是它为鼠标用户改进了可用性，可以关联特定的表单控件。
+            label标签和特定表单控件关联之后，如果用户在 label 元素内点击文本，
+                                   就会触发关联的表单控件。就是说，当用户选择该label标签时，
+                                   浏览器就会自动将焦点转到和label标签相关的表单控件上。
+		</div>
+		<div>
+			label标签常用于与checkbox或radio关联，以实现点击文字也能选中/取消checkbox或radio。
+			点击文字和点击前面的单选框效果相同，即加大了控件的可点击区域较大，
+			因为点击标签或控件都将激活控件，这对于复选框和单选框特别有用。
+		</div>
+	</body>
+</html>

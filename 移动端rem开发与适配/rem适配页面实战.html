@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!-- 移动端 -->
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+	<title>rem</title>
+	<style type="text/css">
+           .box{
+           	width:160px;
+           	height:160px;
+           	background-color: red;
+           }
+           .box p{
+              font-size: 16px;
+           }
+	</style>
+</head>
+<body>
+ <!--   1、rem根据html根元素大小而定
+   原理：将px替换成rem,动态修改HTML的font-size适配。
+   兼容性：ios6以上和Android2.1以上，基本覆盖所有流行的手机系统
+
+        1rem=html根元素大小;
+    -->
+
+   <div class="box">
+        <p>hello</p>
+   </div>
+    
+       <!-- 如何动态修改HTML根元素font-size
+            有两种方法：
+
+
+        -->
+<script type="text/javascript">
+// 兼容获取设备宽度
+    let htmlWidth = document.documentElement.clientWidth || document.body.clientWidth;
+    console.log(htmlWidth);
+
+
+    //
+    let htmlDom = document.getElementsByTagName('html')[0];
+          htmlDom.style.fontSize = htmlWidth/10+'px';
+</script>
+</body>
+</html>

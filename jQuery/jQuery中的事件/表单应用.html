@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <style>
+        .txt{background: yellow; }
+        .getClass{background: red; }
+        .blurClass{background: green; }
+    </style>
+</head>
+<body>
+<form id="form" action="#">
+    邮箱：<input id="input" type="text" class="txt" title="">
+    <span></span>
+</form>
+<script>
+    $(function () {
+        $("#input").trigger("focus");//默认时自动获得焦点
+        $("#input").focus(function () {//文本框获取焦点事件
+            $(this).removeClass("txt")//删除类别样式
+                .addClass("getClass");//添加类别样式
+            $("span").html("请你输入邮箱地址");
+        });
+        $("#input").blur(function () {//文本框丢失焦点时间
+            var vtext = $("#input").val();//获取输入框的值
+            if(vtext.length===0){
+                $(this).removeClass("getClass")
+                    .addClass("blurClass");
+                $("span").html("邮箱地址不能为空");
+            }else{
+                $("span").html("");
+            }
+        });
+    })
+</script>
+</body>
+</html>

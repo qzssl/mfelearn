@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+</head>
+<body>
+<ul>
+    <li>体育运动：<span>羽毛球</span></li>
+    <li>类型图书：<span>网络、技术1</span></li>
+    <li title="t">类型图书：<span>网络、技术2</span></li>
+    <li>类型图书：<span>网络、技术3</span></li>
+</ul>
+<script>
+    $(function () {
+        $("ul li").remove("li[title=t]");//删除指定属性的元素
+        $("ul li:eq(1)").remove();//删除节点中第二个元素
+    })
+</script>
+</body>
+</html>

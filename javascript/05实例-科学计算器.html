@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>科学计算器</title>
+		<script src="js/jquery.min.js"></script>
+		<style type="text/css">
+			*{font-size: 12p;}
+			body{
+				background-color: buttonface;border-style: none;
+			}
+			.button{
+				width:50px;
+				height:30px;
+			}
+			#txt_display{
+				width:100%;
+				cursor: default;
+				text-align: right;
+			}
+		</style>
+		<script>
+		   var calc_buttons = [0,1,2,3,4,5,6,7,8,9,".",",","=","+","-",
+		   "*","/","AC","sin","cos","asin","acos","atan","ln"];
+		   var previous_value = 0,op="",start_new_input=true;
+		   //核心函数
+		   function calc(strCMD){
+		   	//获取文本框输入的值
+		   	var objTxt = $("txt_display");
+		   	//根据当前点击的按钮内容决定所需要的操作
+		   	switch(strCMD){
+		   		//如果是三角函数，调用Math对象相应的方法操作
+		   		case "sin":objTxt.value = Math.sin(objTxt.value);break;
+		   		case "cos":objTxt.value = Math.cos(objTxt.value);break;
+		   		case "tan":objTxt.value = Math.tan(objTxt.value);break;
+		   		case "asin":objTxt.value = Math.asin(objTxt.value);break;
+		   		case "acos":objTxt.value = Math.acos(objTxt.value);break;
+		   		case "atan":objTxt.value = Math.atan(objTxt.value);break;
+		   		case "ln":objTxt.value = Math.log(objTxt.value);break;
+		   		//如果是四则运算符，则执行计算
+		   		case "+":
+		   		case "-":
+		   		case "*":
+		   		case "/":
+		   		    start_new_input = true;
+		   		    if(op!="" && objTxt.value!=""){
+		   			    objTxt.value = eval(previous_value + op + objTxt.value);
+		   			    op = strCMD;
+		   		    }else{
+		   		     	op = strCMD;
+		   		    }
+		   		break;
+		   	    case "=":
+		   	        start_new_input = true;
+		   		    if(op!="" && objTxt!="")
+		   			    objTxt.value = eval(previous_value + op + objTxt.value);
+		   			    op = "";
+		   			    previous_value = 0;
+		   			    break;
+		   	    //重置
+		   	    case "AC":
+		   	        start_new_input = true;
+		   	        objTxt.value = 0;
+		   	        op = "";
+		   	        previous_value = 0;
+		   	        break;
+		   	    //如果是小数点
+		   	    case ".":
+		   	    //调用indexOf方法，如果当前输入中已经有了小数点则跳出循环操作
+		   	    //如果当前没有了小数点，则会执行default块
+		   	        if(objTxt.value.indexOf(".")!= -1)break;
+		   	    //0-9或是小数点
+		   	    default:
+		   	        if(start_new_input){
+		   	        	start_new_input = false;
+		   	        	previous_value = objTxt.value;
+		   	        	objTxt.value = 0;
+		   	        }
+		   	        //如果当前输入不是0
+		   	        if(objTxt.value!=0){
+		   	        	objTxt.value += strCMD;
+		   	        }else if(strCMD!=0){
+		   	        	objTxt.value = strCMD;
+		   	        }
+		   	}
+		   }
+		   //布局
+		   function	write_table(){
+				document.write('<table>');
+				document.write('<tr>')
+				for (var i=0;i<calc_buttons.length;i++) {
+					document.write("<td>");
+					document.write("<input value='"+calc_buttons[i]+"' type='button'"
+					+"class= 'button' onclick='calc(this.value)'>");
+                    document.write("</td>");
+					if((i+1)%5==0)document.write('</tr><tr>');
+				}
+				document.write("</tr>");
+				document.write("</table>");
+			}
+		   function $(str){return (document.getElementById(str));}
+		</script>
+	</head>
+	<body style="overflow: auto;">
+		<input id="txt_display" value="0" readonly>
+		<script type="text/javascript">
+		    write_table(); 
+		</script>
+	</body>
+</html>

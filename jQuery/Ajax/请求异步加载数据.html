@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+</head>
+<body>
+<div class="divFrame"></div>
+<button>加载</button>
+<script>
+    $(function () {
+       /* $("button").click(function () {
+            $(".divFrame").load("../综合案例01.html");
+        });*/
+       $("button").click(function () {
+           $.getJSON("../data.json",function (data) {
+               $(".divFrame").empty();//清空内容
+               var str = "";
+               $.each(data,function (index,info) {
+                   str += "id:"+info["id"]+"<br>";
+                   str += "name:"+info["name"]+"<hr>";
+               });
+               $(".divFrame").html(str);
+           });
+       });
+       $(".div1 #div2")//id号修饰ID号
+       $("div #div2")//避免使用tag或class来修改ID号
+        $("div[title='tmp']")//尽量使用tag访问元素的属性
+
+        var obj = $("#div");//先使用变量进行保存
+        obj.bind("click",function () {alert("hello");})
+    })
+</script>
+</body>
+</html>

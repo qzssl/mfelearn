@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+</head>
+<body>
+<div>
+    <input type="button" id="btn" value="点击">
+</div>
+<div class="show"></div>
+<script>
+    $(function () {
+        var count = 0;//记录执行次数
+        $("body,div, #btn").click(function (event) {//body、div、按钮都执行单击事件
+            count++;
+            $(".show").show()
+                .html("hello world")
+                .append("<div>执行次数<b>"+count+"</b></div>");
+            event.stopPropagation();//阻止冒泡过程
+        });
+    })
+    $(document).ready(function () {
+        //do something
+    })
+    $(function () {
+        //do something
+    })
+    jQuery(document).ready(function () {
+        //do something
+    })
+    jQuery(function () {
+        //do something
+    })
+
+    $("a").hover(function () {
+        //
+    },function () {
+        //
+    })
+</script>
+</body>
+</html>

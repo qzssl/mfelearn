@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <style>
+        .getClass{background: yellow;}
+    </style>
+</head>
+<body>
+<div id="div">示例</div>
+<script>
+    $(function () {
+        // $("#div").css("background","red");
+        // $("#div").addClass("getClass");
+        $("#div").click(function () {
+            $(this).toggleClass("getClass");
+        });
+    })
+</script>
+</body>
+</html>

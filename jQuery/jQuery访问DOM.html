@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <style>
+        .divDefault{background-color: yellow;}
+        .divClick{background-color: red;}
+    </style>
+</head>
+<body>
+<div id="divTmp">测试文本</div>
+<div id="divOut"></div>
+<script>
+/*    var tDiv =document.getElementById("divTmp");//获取DOM对象
+    var oDiv=document.getElementById("divOut");//获取DOM对象
+    var cDiv=tDiv.innerHTML;//获取DOM对象中的内容
+    oDiv.innerHTML=cDiv;//设置DOM对象中内容*/
+
+    var tDiv=$("#divTmp");//获取jQuery对象
+    var oDiv=$("#divOut");//获取jQuery对象
+    var cDiv=tDiv.html();//获取jQuery对象中的内容
+    oDiv.html(cDiv);//设置jQuery对象中的内容
+</script>
+
+<div>
+    姓名：<input type="text" id="text1"><br/>
+    姓别：<input id="Radio1" type="radio" name="rdoSex" value="男">男
+          <input id="Radio2" type="radio" name="rdoSex" value="女">女
+    婚否：<input id="Checkbox1" type="checkbox">
+    <input type="button" id="button" value="提交"">
+</div>
+<div id="divTip"></div>
+<script>
+    $(function () {
+        $("#button").click(function () {
+            //获取输入框的值
+            var oTextValue=$("#text1").val();
+            //获取单选框按钮的值
+            var oRdoValue=$("#Radio1").is(":checked")?"男":"女";
+            //获取复选框的值
+            var oChkValue=$("#Checkbox1").is(":checked")?"已婚":"未婚";
+            //显示提示文本框元素和内容
+            $("#divTip").html(oTextValue+"<br/>"+oRdoValue+
+            "<br/>"+oChkValue);
+        })
+    })
+</script>
+
+<div class="divDefault">点击前的样式</div>
+<script>
+    $(function () {
+        $(".divDefault").click(function () {
+            $(this).toggleClass("divClick").html("点击后样式");
+        });
+    })
+</script>
+
+
+<div class="zx">
+    <div class="fq">
+        父元素
+        <div class="ez">子元素</div>
+    </div>
+    <div class="xd">1</div>
+    <div class="xd">2</div>
+</div>
+<div class="xd">3</div>
+<script>
+    $(function () {//匹配后代元素
+        // $("div span").css("backgroundColor","red");
+    });
+    $(function () {//匹配子元素
+       // $("div>span").css("backgroundColor","yellow");
+    });
+    $(function () {//相邻
+       // $(".zx+div").css("backgroundColor","yellow");
+       //或者使用next，nextAll
+       // $(".zx").nextAll().css("backgroundColor","yellow")
+    });
+    $(function () {//兄弟
+        $(".fq").siblings("div").css("backgroundColor","yellow");
+    });
+</script>
+
+
+<div class="div">1</div>
+<div class="div">2</div>
+<div class="div">3</div>
+<div class="div">4</div>
+<script>
+    $(function () {
+        $(".div:even").css("backgroundColor","yellow")
+    })
+</script>
+</body>
+</html>

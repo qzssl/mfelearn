@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+</head>
+<body>
+<button>点击变大</button>
+<script>
+    $(function () {
+        $("button").click(function () {
+            $(this).animate(
+                {width:"20%",
+                 height:"70px"},
+                3000,
+                function () {
+                    $(this).css("border","1px solid")
+                        .html("变大了");
+                });
+        });
+    })
+</script>
+</body>
+</html>

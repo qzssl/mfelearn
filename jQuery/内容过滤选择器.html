@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <style>
+        div{width:56px;height:65px;border:1px solid;float: left;}
+    </style>
+</head>
+<body>
+<div>ABCD</div>
+<div><span></span></div>
+<div>EFG</div>
+<div></div>
+<script>
+    $(function () {//包含有文本A元素
+        // $("div:contains('A')").css("backgroundColor","red");
+    });
+    $(function () {//获取所有不包含子元素或者文本的空元素
+        // $("div:empty").css("backgroundColor","yellow");
+    });
+    $(function () {//获取含有选择器所匹配的元素的元素
+        // $("div:has(span)").css("backgroundColor","blue");
+    });
+    $(function () {//获取所有包含子元素或者文本的元素
+        $("div:parent").css("backgroundColor","pink");
+    })
+
+</script>
+
+</body>
+</html>

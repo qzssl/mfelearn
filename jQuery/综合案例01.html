@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <style>
+        #content{border: 1px solid #666;width:300px;overflow: hidden;}
+        .header{background: #eee;padding:8px;height:18px;cursor: hand;}
+        .header h3{padding:0;margin:0;float: left;}
+        .header span{float: right;margin-top: 3px;}
+        .center{padding:8px;}
+        .center ul{list-style-type: none;margin:0;padding:0;}
+        .center ul li{float: left;width:95px;height:23px;line-height: 23px;}
+        .center .jh{float: right;padding:5px 0;}
+        img{width:22px;height:22px;}
+        .getClass{background-color: #eeeeee;}
+    </style>
+</head>
+<body>
+<div id="content">
+    <div class="header">
+        <h3>图书分类</h3>
+        <span><img src="images/flower-green.png" alt=""></span>
+    </div>
+    <div class="center">
+        <ul>
+            <li><a href="#">小说</a><i>(1110)</i></li>
+            <li><a href="#">小说</a><i>(1110)</i></li>
+            <li><a href="#">小说</a><i>(1110)</i></li>
+            <li><a href="#">小说</a><i>(1110)</i></li>
+            <li><a href="#">小说</a><i>(1110)</i></li>
+            <li><a href="#">小说</a><i>(1110)</i></li>
+            <li><a href="#">小说</a><i>(1110)</i></li>
+            <li><a href="#">小说</a><i>(1110)</i></li>
+            <li><a href="#">小说</a><i>(1110)</i></li>
+            <li><a href="#">小说</a><i>(1110)</i></li>
+            <li><a href="#">小说</a><i>(1110)</i></li>
+        </ul>
+        <div class="jh">
+            <a href="#">简化</a>
+            <img src="images/flower-green.png">
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $(".header").click(function () {//图片点击事件
+            if($(".center").is(":visible")){//如果内容可见
+                $(".header span img").attr("src","images/borderimage.png");//改变图片
+                //隐藏内容
+                $(".center").hide();
+            }else{
+                $(".header span img").attr("src","images/flower-green.png");
+                $(".center").show();
+            }
+        });
+        $(".jh>a").click(function () {//简化链接
+            if($(".jh>a").text()==="简化"){
+            //    隐藏index大于4且不是最后一项的元素
+                $(".center ul li:gt(4):not(:last)").hide();
+            //    将内容更改为更多
+                $(".jh>a").text("更多");
+            }else{
+                $("ul li:gt(4):not(:last)")
+                    .show()
+                    .addClass("getClass");//显示所选元素且添加样式
+            //    将内容更改为简化
+                $(".jh a").text("简化");
+            }
+        });
+    });
+</script>
+</body>
+</html>
