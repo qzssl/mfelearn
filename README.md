@@ -1,1 +1,1 @@
-#[1.闭包](https://github.com/qzssl/mfelearn/edit/master/closure.md)
+#[1.闭包](https://github.com/qzssl/mfelearn/blob/master/closure.md)
