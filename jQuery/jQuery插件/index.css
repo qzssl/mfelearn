@@ -1,0 +1,10 @@
+
+/*分页插件*/
+a{text-decoration: none;}
+.active{background: #0066cc;color: #fff;}
+.first-page,.end-page,.prev-page,.next-page,.box-page a{
+    float: left;
+    padding:5px 10px;border: 1px solid #0066cc;cursor: pointer;margin:5px;cursor: pointer;}
+.box-page{float: left;}
+.box-page a,.box-page span{float: left;}
+.disabled{cursor: no-drop;opacity: 0.5;}

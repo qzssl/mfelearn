@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="index.css" rel="stylesheet">
+    <style>
+        .box{width: 990px;height:100px;}
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <div id="page"></div>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/pagination.js"></script>
+<script>
+    $('#page').Pagination({
+        totalPage:20,
+        pageBtnNum:9,
+        backfn:function (page) {
+            console.log('HTML：',page)
+        }
+    })
+
+</script>
+</body>
+</html>
