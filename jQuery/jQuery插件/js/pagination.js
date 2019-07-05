@@ -83,19 +83,20 @@
                 pagehtml+='<span>...</span>';
                 pagehtml+=setPage(current,start,end);
             }
-        }else{
-            if (current<this.opts.pageBtnNum){
-                start=2;end=this.opts.pageBtnNum-1;
+        }else{//两边会出现省略号
+            if (current<this.opts.pageBtnNum-1){//右侧有省略
+                start=2;
+                end=this.opts.pageBtnNum-1;
                 pagehtml+=setPage(current,start,end);
                 pagehtml+='<span>...</span>';
-            }else if (this.opts.pageBtnNum<=current&&current<=this.opts.totalPage-this.opts.pageBtnNum+2) {//两边会出现省略号
+            }else if (this.opts.pageBtnNum-1<=current&&current<=this.opts.totalPage-this.opts.pageBtnNum+2) {//两边都有
                 let btn = this.opts.pageBtnNum-2;
                 pagehtml+='<span>...</span>';
                 start=current-Math.ceil((this.opts.pageBtnNum-2)/2)+1;
                 end=start+btn-1;
                 pagehtml+=setPage(current,start,end);
                 pagehtml+='<span>...</span>';
-            }else{
+            }else{ //左侧有
                 pagehtml+='<span>...</span>';
                 start=this.opts.totalPage-this.opts.pageBtnNum+2;
                 end=this.opts.totalPage-1;
