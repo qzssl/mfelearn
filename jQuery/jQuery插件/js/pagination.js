@@ -1,4 +1,5 @@
 (function ($,window) {
+    var document = window.document;
     //默认参数
     var defaultOpts = {
         current:3,//当前页
@@ -29,7 +30,11 @@
         //移除内容
         this.elem.empty();
         //添加元素
-        this.elem.append(firstpage).append(prevpage).append(boxpage).append(nextpage).append(endpage);
+        if (this.opts.coping){
+            this.elem.append(firstpage).append(prevpage).append(boxpage).append(nextpage).append(endpage);
+        }else {
+            this.elem.append(prevpage).append(boxpage).append(nextpage);
+        }
         //设置HTML内容
         this.setHtml({
             '.first-page':this.opts.firstText,
@@ -136,16 +141,16 @@
         this.elem.on('click',function (e) {
             let elem = e.target;
             if ($(elem).hasClass('prev-page')) { //上一页
-                if (self.opts.current<=1){return}
+                if (self.opts.current<1){return}
                 self.opts.current-=1;
             }else if ($(elem).hasClass('next-page')) {//下一页
-                if (self.opts.current>=self.opts.totalPage){return}
+                if (self.opts.current>self.opts.totalPage){return}
                 self.opts.current+=1;
             }else if ($(elem).hasClass('first-page')){
                 if (self.opts.current<=1){return}
                 self.opts.current=1;
             } else if ($(elem).hasClass('end-page')) {
-                if (self.opts.current>=self.opts.totalPage){return}
+                if (self.opts.current>self.opts.totalPage){return}
                 self.opts.current=self.opts.totalPage;
             }else if ($(elem).attr('data-pageindex')!=undefined) {
                 self.opts.current=parseInt($(elem).attr('data-pageindex'));
@@ -155,7 +160,6 @@
             }
             self.render();
         })
-
     };
 
     //创建元素
