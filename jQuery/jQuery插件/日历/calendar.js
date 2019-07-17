@@ -62,20 +62,20 @@
             month=opts.cur.month;
         var h={
             prevYear:function () {
-                return '<span class="prev-year" '+(self.zIndex==2?'data-yy='+(pYear-1):'')+'>&lt;&lt;</span>';
+                return '<span class="prev-year" '+(self.zIndex==2&&pYear&&nYear?'data-yy='+(pYear-1):'')+'>&lt;&lt;</span>';
             }(),
             prevMonth:function () {
                 return self.zIndex?"":'<span class="prev-month">&lt;</span>';
             }(),
             ym:function () {
-                return self.zIndex==2?'<div class="calendar-top-ym"><span class="scope-ym">'+pYear+'年-'+nYear+'年</span></div>'
+                return self.zIndex==2&&pYear&&nYear?'<div class="calendar-top-ym"><span class="scope-ym">'+pYear+'年-'+nYear+'年</span></div>'
                         :'<div class="calendar-top-ym"><span data-y="'+year+'">'+year+'年</span><span data-m="'+month+'">'+month+'月</span></div>'
             }(),
             nextMonth:function () {
                 return self.zIndex?'':'<span class="next-month">&gt;</span>';
             }(),
             nextYear:function () {
-                return '<span class="next-year" '+(self.zIndex==2?'data-yy='+(nYear+1):'')+'>&gt;&gt;</span>';
+                return '<span class="next-year" '+(self.zIndex==2&&pYear&&nYear?'data-yy='+(nYear+1):'')+'>&gt;&gt;</span>';
             }(),
         };
         var hstr="";
@@ -161,31 +161,26 @@
                 self.opts.zIndex=0;
                 self.elem.val(value);
                 // $(".box-calendar").hide();
-            }
-            if ($(elem).hasClass('prev-year')){//上一年
+            }else if ($(elem).hasClass('prev-year')){//上一年
                 if (self.zIndex==2){
                     var yy=parseInt($(elem).attr('data-yy'));
                     pYear=yy-11; nYear=yy;
                 }else {
                     self.opts.cur.year-=1;
                 }
-            }
-            if ($(elem).hasClass('prev-month')){//点击日期上一月
+            }else if ($(elem).hasClass('prev-month')){//点击日期上一月
                 self.opts.cur.month-=1;
                 if (self.opts.cur.month<1){
                     self.opts.cur.year-=1;
                     self.opts.cur.month=12;
                 }
-            }
-            if ($(elem).hasClass('next-month')){//下一月
+            }else if ($(elem).hasClass('next-month')){//下一月
                 self.opts.cur.month+=1;
                 if (self.opts.cur.month>12){
                     self.opts.cur.year+=1;
                     self.opts.cur.month=1;
                 }
-            }
-
-            if ($(elem).hasClass('next-year')){//点击日期下一年
+            }else if ($(elem).hasClass('next-year')){//点击日期下一年
                 if (self.zIndex==2){
                     var yy=parseInt($(elem).attr('data-yy'));
                     pYear=yy; nYear=yy+11;
@@ -221,11 +216,14 @@
                     self.zIndex=0;
                 }
             }
+            if (!pYear&&!nYear&&self.zIndex==2){
+                return;
+            }
             self.topView(pYear,nYear);
             self.mainView(pYear,nYear);
         })
     };
-   
+
     var tools = {
         isLeapYear:function(y){ //判断闰年
             return y%400===0 || ( y%4 === 0 && y%100 !== 0);
