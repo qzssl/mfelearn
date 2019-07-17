@@ -2,15 +2,14 @@
     font: 12px '\5B8B\4F53';
     z-index: 99999999;
     box-shadow: 2px 2px 5px rgba(0,0,0,.1);
-    border-top: none;
-    border-bottom: none;
+    border: 1px solid #d2d2d2;
     background-color: #fff;
     color: #333;
     position: absolute;
     /*height: 400px;*/
     padding: 10px;
     min-width: 200px;
-    display:none;
+    /*display:none;*/
 }
 
 
