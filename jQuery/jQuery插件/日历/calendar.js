@@ -145,6 +145,9 @@
     };
     Calendar.prototype.events=function(){
         var self=this;
+        $(self.elem).click(function () {
+            $(".box-calendar").show();
+        });
         $(".box-calendar").on('click',function(e){
             var elem = e.target;
             if (elem.getAttribute('data-ymd')) {//日期
@@ -160,7 +163,7 @@
                 };
                 self.opts.zIndex=0;
                 self.elem.val(value);
-                // $(".box-calendar").hide();
+                $(".box-calendar").hide();
             }else if ($(elem).hasClass('prev-year')){//上一年
                 if (self.zIndex==2){
                     var yy=parseInt($(elem).attr('data-yy'));
